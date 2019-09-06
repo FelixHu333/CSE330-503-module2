@@ -20,7 +20,7 @@
 #    }
     $op="nothing";
     if(isset($_GET['operation'])){
-        $op=$_GET['operation'];
+        $op=(string)$_GET['operation'];
     } else {
     	$valid = False;
     }
