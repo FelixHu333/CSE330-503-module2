@@ -13,18 +13,28 @@ if(isset($_SESSION['username'])){
     # code taken from https://stackoverflow.com/questions/15774669/list-all-files-in-one-directory-php
     $files = array_diff(scandir($full_path), array('.', '..'));
     # end code taken from stackoverflow
-    
+    $success= True;
 } else {
+   $success= False;
    printf("Could not identify the user, did you logout?");
 }
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+</head>
 <table>
 <?php
-foreach($files as $fil){
-    echo sprintf("<tr><td valign='center'>%s</td>\n<td valign='center'><form><input type=submit value='view'></form></td><td valign='center'><form><input type=submit value='delete'></form></td></tr>",
-	htmlentities($fil)
-    );
+if($success== True){
+    foreach($files as $fil){
+        echo sprintf("<tr><td valign='center'>%s</td>\n<td valign='center'><form action='view_file.php' method='GET'>\n
+	<input type='submit' value='%s'  name='file'></form></td><td valign='center'><form><input type=submit value='delete'></form></td></tr>",
+	    htmlentities($fil),
+	    htmlentities($fil)
+        );
+    }
 }
 ?>
 </table>
+</html>
