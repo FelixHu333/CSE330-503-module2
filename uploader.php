@@ -15,12 +15,14 @@ if(isset($_SESSION['username'])){
     }
     $full_path = sprintf("/srv/uploads/%s/%s", $name, $filename);
     if( move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $full_path) ){
-	echo "Upload success!";
+	header("Location: success_upload.html");
 	exit;
     }else{
-	echo "Upload failed.";
+	header("Location: fail_upload.html");
 	exit;
     }
     # end code snippet from wiki
+} else {
+    printf("Could not identify the user, did you logout?");
 }
 ?>

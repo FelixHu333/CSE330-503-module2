@@ -7,3 +7,7 @@
 		<input type="submit" value="Upload File" />
 	</p>
 </form>
+<form action="download.php" method="POST">
+    <p><label for="download">Download file from url: </label><input type="text" name="url" id="download" required/></p>
+    <p><input type="submit" value="Download File" /></p>
+</form>
